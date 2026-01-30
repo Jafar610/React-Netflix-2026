@@ -1,0 +1,49 @@
+.header-container{
+    position:sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(11, 1, 1);
+    color: white;
+    padding: 20px 10px;
+
+}
+.header-left{
+    display: flex;
+}
+.header-left img{
+    margin-left: 10px;
+}
+.header-left ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    margin-left: 10px;
+}
+.header-left ul .links{
+    padding-left: 20px;
+}
+
+.header-right{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.header-right .search-icon{
+    margin-right: 10px;
+    font-size: 30px;
+}
+.header-right .notification-icon{
+    margin-right: 10px;
+    font-size: 30px;
+}
+.header-right .account-icon{
+    margin-right: 10px;
+    font-size: 30px;
+}
+.header-right .dropdown-icon{
+    margin-right: 10px;
+    font-size: 30px;
+}
