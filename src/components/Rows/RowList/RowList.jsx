@@ -1,14 +1,14 @@
 import React from "react";
 import Row from "../Row/Row";
 import "./rowList.css";
+import requests from "../../../utils/request";
 function RowList() {
   return (
     <>
-      <div className="rowList">
-        <Row />
-        <Row />
-        <Row />
-      </div>
+      <Row
+        title = "Netflix Originals"
+        fetchUrl={requests.fetchNetflixOriginals}
+      />
     </>
   );
 }

@@ -3,34 +3,61 @@ import axios from "../../../utils/axios.jsx";
 import requests from "../../../utils/request.jsx";
 import "./Row.css";
 
-const Row = () => {
+const Row = ({title, fetchUrl, isLargeRow}) => {
   const [movie, setMovie] = useState([]);
-    useEffect(() => {
-        async function fetchData() {
-            const request = await axios.get(requests.fetchNetflixOriginals);
-            setMovie(request.data.results);
-            return request;
-        }
-        fetchData();
-    }, []);
-  
+  const [trailerURL, setTrailerURL] = useState([]);
+  const base_URL = "https://image.tmdb.org/t/p/original";
+
+  useEffect(() => {
+    (async ()=>{
+      try{
+        const request = await axios.get(`${fetchUrl}`);
+        setMovie(request.data.results);
+      } catch(error){
+        console.log("Error",error);
+      }
+    })()
+  }, []);
+
+  const handleClick = (movie)=>{
+    if(trailerURL){
+      setTrailerURL('')
+    }else{
+      movieTrailer(movie?.title || movie?.name || movie?.original_name)
+      .then((url)=>{
+        const urlParams = new URLSearchParams(new URL(url).search);
+        setTrailerURL(urlParams.get('v'));
+      })
+    }
+  }
+
+  const opts = {
+    height: '390',
+    width: '100%',
+    playerVars:{
+      autoplay:1,
+    },
+  }
 
   return (
     <div className="row">
-      <h1>Netflix Originals</h1>
+      <h1>{title}</h1>
       <div className="row__posters">
-        {movie.map((mov) => (
-          <img
-            key={mov.id}
-            className="row__poster"
-            src={`https://image.tmdb.org/t/p/w500${mov.poster_path}`}
-            alt={mov.name}
-
-          />
-        ))}
+        {
+          movie?.map((movie, index)=>(
+            <img 
+            onClick={()=>handleClick(movie)}
+            key={index}
+            src={`${base_URL}${isLargeRow ? movie.poster_path : movie.backdrop_path}`}
+            alt={movie.name}
+            className={`row_poster ${isLargeRow && "row_posterLarge"}`} />
+          ))
+        }
       </div>
 
-      <div className="trailer"></div>
+      <div style={{padding: '40px'}}>
+        {trailerURL && <YouTube videoId = {trailerURL} opts = {opts}/>}
+      </div>
     </div>
   );
 };
