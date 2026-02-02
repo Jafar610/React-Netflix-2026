@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "../../../utils/axios.jsx";
-import requests from "../../../utils/request.jsx";
 import "./Row.css";
 
 const Row = ({title, fetchUrl, isLargeRow}) => {
