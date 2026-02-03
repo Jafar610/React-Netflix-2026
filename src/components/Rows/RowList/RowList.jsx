@@ -8,6 +8,7 @@ function RowList() {
       <Row
         title = "Netflix Originals"
         fetchUrl={requests.fetchNetflixOriginals}
+        isLargeRow={true}
       />
     </>
   );
