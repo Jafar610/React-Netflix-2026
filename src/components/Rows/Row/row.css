@@ -5,7 +5,7 @@
     transition: transform 450ms;
     margin-right: 10px;
 }
-.row_posters {
+.row__posters{
     display: flex;
     overflow-y: hidden;
     overflow-x: scroll;
@@ -26,4 +26,5 @@
 .row{
     margin-left: 20px;
     color: white;
+    background-color: black;
 }

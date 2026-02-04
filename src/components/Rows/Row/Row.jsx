@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "../../../utils/axios.jsx";
 import "./Row.css";
-
+import YouTube from "react-youtube";
+import movieTrailer from "movie-trailer";
 const Row = ({title, fetchUrl, isLargeRow}) => {
   const [movie, setMovie] = useState([]);
   const [trailerURL, setTrailerURL] = useState([]);
@@ -53,7 +54,6 @@ const Row = ({title, fetchUrl, isLargeRow}) => {
           ))
         }
       </div>
-
       <div style={{padding: '40px'}}>
         {trailerURL && <YouTube videoId = {trailerURL} opts = {opts}/>}
       </div>

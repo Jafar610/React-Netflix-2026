@@ -16,9 +16,15 @@ function RowList() {
         fetchUrl={requests.fetchTrending}
       />
       <Row
-        title = "Top Rated"
-        fetchUrl={requests.fetchTopRated}
+        title = "TV Shows"
+        fetchUrl={requests.fetchTvShow}
       />
+      
+      <Row
+        title = "Top Rated Movies"
+        fetchUrl={requests.fetchTopRatedMovies}
+      />
+
       <Row
         title = "Action Movies"
         fetchUrl={requests.fetchActionMovies}
